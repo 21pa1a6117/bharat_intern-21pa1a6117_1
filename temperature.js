@@ -1,0 +1,33 @@
+let celciusInput = document.querySelector('#celcius>input')
+let fahrenheitInput = document.querySelector('#fahrenheit>input')
+let kelvinInput = document.querySelector('#kelvin>input')
+let btn = document.querySelector('.button button')
+function roundNumber(number){
+    return Math.round(number*100)/100
+}
+celciusInput.addEventListener('input',function(){
+    let c= parseFloat(celciusInput.value)
+    let f = (c*(9/5))+32 
+    let k = c + 273.15
+    fahrenheitInput.value =roundNumber(f)
+    kelvinInput.value = roundNumber(k)
+})
+fahrenheitInput.addEventListener('input',function(){
+    let f= parseFloat(fahrenheitInput.value)
+    let c = (f - 32) * (5/9)
+    let k = (f - 32) * (5/9)+ 273.15
+    celciusInput.value =roundNumber(c)
+    kelvinInput.value = roundNumber(k)
+})
+kelvinInput.addEventListener('input',function(){
+    let k= parseFloat(kelvinInput.value)
+    let c = k-273.15 
+    let f = (k - 273.15) *(9/5) + 32
+    celciusInput.value = roundNumber(c)
+    fahrenheitInput.value =roundNumber(f)
+})
+btn.addEventListener('click',()=>{
+    celciusInput.value = ""
+    fahrenheitInput.value = ""
+    kelvinInput.value = ""
+})
